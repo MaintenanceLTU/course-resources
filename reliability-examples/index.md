@@ -1,16 +1,17 @@
-# Reliability Examples / Exempel på driftsäkerhet
+# Reliability Examples / Exempel på tillförlitlighet
 
-Examples and learning materials about reliability in railway systems.
+Examples and learning materials about reliability.
 
-Exempel och kursmaterial om driftsäkerhet i järnvägssystem.
+Exempel och kursmaterial om tillförlitlighet.
 
-## Topics / Ämnen
+## Examples / Exempel
 
-### Railway Turnouts / Järnvägsväxlar
+### Railway Turnouts / Spårväxlar
 
-Explore BIS asset data and Ofelia failure data for railway turnouts, using SQL and Python.
+BIS asset data and Ofelia failure data are stored in SQL databases. Query the data with SQL in a database client, or send SQL queries from Python.
 
-Utforska BIS anläggningsdata och Ofelia feldata för järnvägsväxlar med SQL och Python.
+BIS anläggningsdata och Ofelia feldata lagras i SQL-databaser. Fråga efter data med SQL i ett databasprogram eller skicka SQL-frågor från Python.
 
 - [English](railway-turnouts/index.en.md)
 - [Svenska](railway-turnouts/index.sv.md)
+
