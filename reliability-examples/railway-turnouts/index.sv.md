@@ -5,7 +5,7 @@ Exempel på hur du utforskar anläggnings- och feldata från BIS och Ofelia med 
 ## Innehåll
 
 - [SQL-exempel](sql/)
-- [Python-exempel med SQL](python/query_data.py)
+- [Python-exempel med SQL](python/index.sv.md)
 
 ## Anslutning
 
