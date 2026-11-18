@@ -12,6 +12,6 @@ BIS asset data and Ofelia failure data are stored in SQL databases. Query the da
 
 BIS anläggningsdata och Ofelia feldata lagras i SQL-databaser. Fråga efter data med SQL i ett databasprogram eller skicka SQL-frågor från Python.
 
-- [English](railway-turnouts/index.en.md)
+- [English](railway-turnouts/index.md)
 - [Svenska](railway-turnouts/index.sv.md)
 

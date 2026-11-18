@@ -5,7 +5,7 @@ Examples for exploring railway asset and failure data from BIS and Ofelia with P
 ## Contents
 
 - [SQL examples](sql/)
-- [Python SQL example](python/index.en.md)
+- [Python SQL example](python/)
 
 ## Connection setup
 
