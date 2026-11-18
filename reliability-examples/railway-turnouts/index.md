@@ -9,8 +9,6 @@ Examples for exploring railway asset and failure data from BIS and Ofelia with P
 
 ## Connection setup
 
-Install the packages listed in the repository's `requirements.txt`.
-
 The examples expect the database tables `bisdata` and `ofeliadata` to be accessible to your account. Column names follow the source data, so names containing spaces or Swedish characters are quoted in SQL.
 
 ### Set credentials in environment variables

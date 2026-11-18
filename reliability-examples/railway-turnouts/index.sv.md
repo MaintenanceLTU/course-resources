@@ -9,8 +9,6 @@ Exempel på hur du utforskar anläggnings- och feldata från BIS och Ofelia med 
 
 ## Anslutning
 
-Installera paketen som anges i repots `requirements.txt`.
-
 Exemplen förutsätter att ditt konto har åtkomst till databastabellerna `bisdata` och `ofeliadata`. Kolumnnamnen följer källdatan. Därför omges namn med mellanslag eller svenska tecken av citattecken i SQL.
 
 ### Ange inloggningsuppgifter som miljövariabler

@@ -2,6 +2,8 @@
 
 BIS and Ofelia data are stored in PostgreSQL databases. SQL is the language used to ask the database for data. You can run SQL in a database client, or send it from Python. In these examples, `pandas` sends each SQL query to PostgreSQL and stores the result in a DataFrame.
 
+Install the packages listed in the repository's `requirements.txt`, e.g. `python -m pip install -r requirements.txt`.
+
 Run the code blocks in order. The code follows the style used in the [complete Python example](sql_query_examples.py).
 
 ## Connect to PostgreSQL

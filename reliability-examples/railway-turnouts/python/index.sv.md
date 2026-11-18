@@ -2,6 +2,8 @@
 
 BIS- och Ofelia-data lagras i PostgreSQL-databaser. SQL är språket som används för att hämta data ur databasen. Du kan köra SQL i ett databasprogram eller skicka frågorna från Python. I exemplen skickar `pandas` varje SQL-fråga till PostgreSQL och sparar resultatet i en DataFrame.
 
+Installera paketen som anges i repots `requirements.txt`, exempelvis `python -m pip install -r requirements.txt`.
+
 Kör kodblocken i ordning. Koden följer stilen i det [kompletta Python-exemplet](sql_query_examples.py).
 
 ## Anslut till PostgreSQL
