@@ -4,8 +4,15 @@ Examples for exploring railway asset and failure data from BIS and Ofelia with P
 
 ## Contents
 
-- [SQL examples](sql/)
-- [Python SQL example](python/)
+SQL database connection and query examples for retrieving asset register and work-order data
+
+- [SQL](sql/)
+- [Python SQL](python/)
+- [MATLAB SQL](matlab/)
+
+Reliability analysis examples
+
+- [Python non-repairable reliability analysis using a Weibull distribution](python/weibull-analysis.md)
 
 ## Connection setup
 

@@ -8,6 +8,23 @@ Kör kodblocken i ordning. Koden följer stilen i det [kompletta Python-exemplet
 
 ## Anslut till PostgreSQL
 
+Din lärare ger dig uppgifterna för databasanslutningen:
+
+- VM (serverns) IP-adress, till exempel `156.xxx.xxx.xxx`
+- Port: `5432`
+- Databas: `rail8`
+- Användarnamn
+- Lösenord
+
+Skapa en fil med namnet `.env` i samma mapp som Python-skriptet. Ersätt exempelvärdena med IP-adressen och inloggningsuppgifterna du fått:
+
+```env
+SQL_ENDPOINT=YOUR_VM_PUBLIC_IP
+SQL_DBNAME=rail8
+STUDENT_USER=myuser
+STUDENT_PASSWORD=yourpass
+```
+
 Börja med att importera paketen. `load_dotenv()` läser anslutningsinställningarna från din `.env`-fil. Värdena används för att skapa anslutningssträngen, och `create_engine()` skapar anslutningen som pandas använder.
 
 ```python
