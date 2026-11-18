@@ -1,111 +1,170 @@
-# Fråga databaserna med Python
+# Fråga BIS och Ofelia från Python
 
-Datan lagras i PostgreSQL-databaser. Python kan skicka SQL-frågor till databasen och läsa in resultaten i pandas-DataFrames. Följ stegen nedan eller se det [kompletta Python-skriptet](query_data.py).
+BIS- och Ofelia-data lagras i PostgreSQL-databaser. SQL är språket som används för att hämta data ur databasen. Du kan köra SQL i ett databasprogram eller skicka frågorna från Python. I exemplen skickar `pandas` varje SQL-fråga till PostgreSQL och sparar resultatet i en DataFrame.
 
-## 1. Importera paketen
+Kör kodblocken i ordning. Koden följer stilen i det [kompletta Python-exemplet](sql_query_examples.py).
+
+## Anslut till PostgreSQL
+
+Börja med att importera paketen. `load_dotenv()` läser anslutningsinställningarna från din `.env`-fil. Värdena används för att skapa anslutningssträngen, och `create_engine()` skapar anslutningen som pandas använder.
 
 ```python
-import os
+# -*- coding: utf-8 -*-
 
+# Load libraries
+from sqlalchemy import create_engine
 import pandas as pd
 from dotenv import load_dotenv
-from sqlalchemy import URL, create_engine, text
-```
+import os
 
-## 2. Läs anslutningsinställningarna och anslut
-
-`load_dotenv()` läser värdena från din `.env`-fil. `URL.create()` bygger anslutningen till PostgreSQL och `create_engine()` förbereder den för frågor.
-
-```python
 load_dotenv()
 
-username = os.getenv("STUDENT_USER")
-password = os.getenv("STUDENT_PASSWORD")
-host = os.getenv("SQL_ENDPOINT")
-database = os.getenv("SQL_DBNAME")
+#%% Create SQL database connection parameters
+user = os.environ.get('STUDENT_USER')
+password = os.environ.get('STUDENT_PASSWORD')
+host = os.environ.get('SQL_ENDPOINT')
+dbname = os.environ.get('SQL_DBNAME')
+port = 5432
 
-connection_url = URL.create(
-    "postgresql+psycopg2",
-    username=username,
-    password=password,
-    host=host,
-    port=5432,
-    database=database,
-)
-engine = create_engine(connection_url)
+connection_string = f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{dbname}"
+
+#%% Create an engine
+engine = create_engine(connection_string)
 ```
 
-## 3. Hämta kolumnnamn och beskrivningar
+## Utforska BIS
 
-SQL-frågan listar kolumnerna i `bisdata` och `ofeliadata`. PostgreSQL visar en beskrivning om en `COMMENT` har lagts till på kolumnen.
+### Hämta kolumnnamn och beskrivningar
+
+Frågan ber PostgreSQL om kolumnnamnen och kommentarerna för BIS-tabellen. En kommentar visas om den har lagts till på kolumnen i databasen. `pd.read_sql` kör frågan och returnerar resultatet som en DataFrame med namnet `bis_info`.
 
 ```python
-column_query = text("""
-    SELECT
-        c.table_name,
-        c.column_name,
-        pg_catalog.col_description(
-            format('%I.%I', c.table_schema, c.table_name)::regclass,
-            c.ordinal_position
-        ) AS description
-    FROM information_schema.columns AS c
-    WHERE c.table_name IN ('bisdata', 'ofeliadata')
-      AND c.table_schema = current_schema()
-    ORDER BY c.table_name, c.ordinal_position
-""")
+#%% BIS
 
-column_info = pd.read_sql_query(column_query, engine)
-print(column_info)
+# Get columns for bisdata table
+query = """
+SELECT
+    column_name,
+    col_description(
+        (table_schema || '.' || table_name)::regclass,
+        ordinal_position
+    ) AS description
+FROM information_schema.columns
+WHERE table_name = 'bisdata'
+ORDER BY ordinal_position;
+"""
+
+bis_info = pd.read_sql(query, engine)
+print(bis_info)
 ```
 
-## 4. Skicka en SQL-fråga och läs resultatet
+### Lista tillgängliga växeltyper
 
-Frågan hämtar driftplatser och växelnummer från BIS för en viss växeltyp. `:turnout_type` är en parameter som skickas separat från SQL-texten.
+`SELECT DISTINCT` returnerar varje växeltyp en gång. Resultatet sparas i `vxltyp`.
 
 ```python
-turnout_query = text('''
-    SELECT "Pl_Forb", "Växelnr"
-    FROM bisdata
-    WHERE "Växeltyp" = :turnout_type
-    ORDER BY "Pl_Forb", "Växelnr"
-''')
-
-turnouts = pd.read_sql_query(
-    turnout_query,
-    engine,
-    params={"turnout_type": "EV-UIC60-760-1:15"},
-)
-print(turnouts)
+# Return all turnout types
+query = """
+SELECT DISTINCT
+    "Växeltyp"
+FROM bisdata;
+"""
+vxltyp = pd.read_sql(query, engine)
+print(vxltyp)
 ```
 
-Resultatet är en pandas-DataFrame. Du kan använda samma metod för Ofelia:
+### Välj växlar av en viss typ
+
+Frågan väljer två kolumner och använder `WHERE` för att bara ta med rader som har den valda växeltypen. Ändra värdet i villkoret för att söka efter en annan typ. Raderna som matchar sparas i `vxl`.
+
+Dubbla citattecken runt kolumnnamnen behövs eftersom källans namn innehåller versaler eller svenska tecken.
 
 ```python
-failure_query = text('''
-    SELECT *
-    FROM ofeliadata
-    WHERE "Växeltyp (ANL)" = :turnout_type
-      AND "Tågstörande" = :train_delaying
-      AND "Anläggningsdel (BVS)" IN (
-          'Omläggningsanordning', 'Kontrollanordning'
-      )
-''')
-
-failures = pd.read_sql_query(
-    failure_query,
-    engine,
-    params={
-        "turnout_type": "EV-UIC60-760-1:15",
-        "train_delaying": "Ja",
-    },
-)
-print(failures.head())
+query = """
+SELECT
+    "Pl_Forb",
+    "Växelnr"
+FROM bisdata
+WHERE "Växeltyp" = 'EV-UIC60-760-1:15';
+"""
+vxl = pd.read_sql(query, engine)
+print(vxl.head())
 ```
 
-## 5. Spara resultatet
+`head()` visar de fem första raderna. Det är ett snabbt sätt att kontrollera resultatet utan att skriva ut hela tabellen.
 
-Till exempel kan du spara Ofelia-resultatet i en Excel-fil:
+## Utforska Ofelia
+
+### Hämta kolumnnamn och beskrivningar
+
+Det här är samma typ av fråga som för BIS, men den hämtar kolumnerna från `ofeliadata`.
 
 ```python
-failures.to_excel("railway_turnout_failures.xlsx", index=False)
+#%% OFELIA
+
+# Get columns for ofeliadata table
+query = """
+SELECT
+    column_name,
+    col_description(
+        (table_schema || '.' || table_name)::regclass,
+        ordinal_position
+    ) AS description
+FROM information_schema.columns
+WHERE table_name = 'ofeliadata'
+ORDER BY ordinal_position;
+"""
+
+ofelia_info = pd.read_sql(query, engine)
+print(ofelia_info)
 ```
+
+### Lista anläggningsdelar
+
+Frågan listar varje unikt värde i Ofelia-kolumnen `Anläggningsdel (BVS)`.
+
+```python
+query = """
+SELECT DISTINCT
+    "Anläggningsdel (BVS)"
+FROM ofeliadata;
+"""
+anldel = pd.read_sql(query, engine)
+print(anldel)
+```
+
+### Hitta matchande felrapporter
+
+Villkoren efter `WHERE` begränsar resultatet till en växeltyp och tågstörande fel. `IN` tar med rader där anläggningsdelen matchar något av de angivna värdena. `SELECT *` hämtar alla kolumner för raderna som matchar. Resultatet sparas i `wo`.
+
+```python
+query = """
+SELECT *
+FROM ofeliadata
+WHERE "Växeltyp (ANL)" = 'EV-UIC60-760-1:15'
+  AND "Tågstörande" = 'Ja'
+  AND "Anläggningsdel (BVS)" IN (
+      'Omläggningsanordning',
+      'Kontrollanordning'
+  );
+"""
+wo = pd.read_sql(query, engine)
+print(wo.head())
+```
+
+## Spara frågeresultat till en fil
+
+Resultaten är pandas-DataFrames, så pandas kan spara dem i vanliga filformat. Kör raden för det format du vill använda. Filerna skapas i Pythons aktuella arbetsmapp. `index=False` gör att pandas inte lägger till ett separat radnummer i filen.
+
+```python
+# Spara BIS-resultatet som en Excel-fil
+vxl.to_excel('VxlObjekt.xlsx', index=False)
+
+# Eller spara samma resultat som en CSV-fil
+vxl.to_csv('VxlObjekt.csv', index=False)
+
+# Spara Ofelia-resultatet som en Excel-fil
+wo.to_excel('EV-UIC60.xlsx', index=False)
+```
+
+Kort sagt avgör SQL-frågan vilken data PostgreSQL returnerar. `pd.read_sql` lägger raderna och kolumnerna i en DataFrame som du kan granska eller spara.
