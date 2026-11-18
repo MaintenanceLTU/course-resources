@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # Load libraries
-from sqlalchemy import create_engine
+from sqlalchemy import URL, create_engine, text
 import pandas as pd
 from dotenv import load_dotenv
 import os
@@ -9,16 +9,23 @@ import os
 load_dotenv()
 
 #%% Create sql db connection parameters
-user = os.environ.get('STUDENT_USER')
+username = os.environ.get('STUDENT_USER')
 password = os.environ.get('STUDENT_PASSWORD')
 host = os.environ.get('SQL_ENDPOINT')  
 dbname = os.environ.get('SQL_DBNAME')  
 port = 5432
 
-connection_string = f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{dbname}"
+connection_url = URL.create(
+    "postgresql+psycopg2",
+    username=username,
+    password=password,
+    host=host,
+    port=5432,
+    database=dbname,
+)
 
 #%% Create an engine
-engine = create_engine(connection_string) 
+engine = create_engine(connection_url) 
 
 #%% BIS
 
