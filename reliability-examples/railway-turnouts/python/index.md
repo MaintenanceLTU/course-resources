@@ -8,6 +8,24 @@ Run the code blocks in order. The code follows the style used in the [complete P
 
 ## Connect to PostgreSQL
 
+Your teacher will provide the database connection details:
+
+- VM IP address, for example `156.xxx.xxx.xxx`
+- Port: `5432`
+- Database: `rail8`
+- Username
+- Password
+
+Create a file named `.env` in the same folder as the Python script. Replace the example values with the host IP address and credentials provided for your account:
+
+```env
+SQL_ENDPOINT=YOUR_VM_PUBLIC_IP
+SQL_DBNAME=rail8
+STUDENT_USER=myuser
+STUDENT_PASSWORD=yourpass
+```
+
+
 First, import the libraries. `load_dotenv()` reads the connection settings from your `.env` file. The values are used to build the connection string, and `create_engine()` creates the connection interface used by pandas.
 
 ```python
@@ -157,6 +175,8 @@ print(wo.head())
 ## Save query results to a file
 
 The results are pandas DataFrames, so pandas can write them to common file formats. Run the line for the format you want. These commands create the files in Python's current working directory. `index=False` leaves out pandas' row-number index.
+
+Saving a DataFrame as an Excel `.xlsx` file requires the `openpyxl` library. Install the packages from the repository root.
 
 ```python
 # Save the BIS result to Excel

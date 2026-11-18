@@ -11,8 +11,6 @@ Exempel på hur du utforskar anläggnings- och feldata från BIS och Ofelia med 
 
 Exemplen förutsätter att ditt konto har åtkomst till databastabellerna `bisdata` och `ofeliadata`. Kolumnnamnen följer källdatan. Därför omges namn med mellanslag eller svenska tecken av citattecken i SQL.
 
-### Ange inloggningsuppgifter som miljövariabler
-
 Din lärare ger dig uppgifterna för databasanslutningen:
 
 - VM (serverns) IP-adress, till exempel `156.xxx.xxx.xxx`
@@ -20,15 +18,6 @@ Din lärare ger dig uppgifterna för databasanslutningen:
 - Databas: `rail8`
 - Användarnamn
 - Lösenord
-
-Skapa en fil med namnet `.env` i samma mapp som Python-skriptet. Ersätt exempelvärdena med IP-adressen och inloggningsuppgifterna du fått:
-
-```env
-SQL_ENDPOINT=YOUR_VM_PUBLIC_IP
-SQL_DBNAME=rail8
-STUDENT_USER=myuser
-STUDENT_PASSWORD=yourpass
-```
 
 ## Kolumnbeskrivningar
 

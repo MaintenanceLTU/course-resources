@@ -158,6 +158,8 @@ print(wo.head())
 
 Resultaten är pandas-DataFrames, så pandas kan spara dem i vanliga filformat. Kör raden för det format du vill använda. Filerna skapas i Pythons aktuella arbetsmapp. `index=False` gör att pandas inte lägger till ett separat radnummer i filen.
 
+För att spara en DataFrame som en Excel-fil (`.xlsx`) behövs biblioteket `openpyxl`. Installera paketen från repots rotmapp.
+
 ```python
 # Spara BIS-resultatet som en Excel-fil
 vxl.to_excel('VxlObjekt.xlsx', index=False)

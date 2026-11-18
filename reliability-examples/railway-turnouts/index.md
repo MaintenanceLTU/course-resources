@@ -11,9 +11,7 @@ Examples for exploring railway asset and failure data from BIS and Ofelia with P
 
 The examples expect the database tables `bisdata` and `ofeliadata` to be accessible to your account. Column names follow the source data, so names containing spaces or Swedish characters are quoted in SQL.
 
-### Set credentials in environment variables
-
-Your instructor will provide the database connection details:
+Your teacher will provide the database connection details:
 
 - VM IP address, for example `156.xxx.xxx.xxx`
 - Port: `5432`
@@ -21,14 +19,6 @@ Your instructor will provide the database connection details:
 - Username
 - Password
 
-Create a file named `.env` in the same folder as the Python script. Replace the example values with the host IP address and credentials provided for your account:
-
-```env
-SQL_ENDPOINT=YOUR_VM_PUBLIC_IP
-SQL_DBNAME=rail8
-STUDENT_USER=myuser
-STUDENT_PASSWORD=yourpass
-```
 
 ## Column descriptions
 
