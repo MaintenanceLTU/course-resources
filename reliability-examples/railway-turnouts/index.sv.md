@@ -27,5 +27,8 @@ Din lärare ger dig uppgifterna för databasanslutningen:
 - Lösenord
 
 ## Kolumnbeskrivningar
+Beskrivning av kolumerna i BIS och OFELIA som inkluderas i databsen finns här:
 
-SQL-exemplen innehåller en fråga som visar tabellernas kolumner och deras PostgreSQL-kommentarer. Kommentarerna måste ha lagts till i databasen när tabellerna skapades. Om frågan inte returnerar några rader bör du först kontrollera att du är ansluten till rätt databas och schema.
+- [Kolumnbeskrivningar BIS och OFELIA](tables-and-columns.md)
+
+SQL-exemplen innehåller också en *query* som visar tabellernas kolumner och deras PostgreSQL-kommentarer. 
