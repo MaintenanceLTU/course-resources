@@ -29,4 +29,8 @@ Your teacher will provide the database connection details:
 
 ## Column descriptions
 
-The SQL examples include a query that lists the table columns and their PostgreSQL comments. Those comments must have been added to the database when the tables were created. If the query returns no rows, first check that you are connected to the correct database and schema.
+Descriptions of all BIS and OFELIA columns can be found here:
+
+- [BIS and OFELIA column descriptions](tables-and-columns.md)
+
+The SQL examples also include queries that retrieve column names and descriptions directly from PostgreSQL.
