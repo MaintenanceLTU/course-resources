@@ -27,7 +27,7 @@ Din lärare ger dig uppgifterna för databasanslutningen:
 - Lösenord
 
 ## Kolumnbeskrivningar
-Beskrivning av kolumerna i BIS och OFELIA som inkluderas i databsen finns här:
+Beskrivningar av samtliga BIS- och OFELIA-kolumner, inklusive datatyper och definitioner, finns i dokumentet:
 
 - [Kolumnbeskrivningar BIS och OFELIA](tables-and-columns.md)
 

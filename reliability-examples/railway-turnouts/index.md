@@ -29,7 +29,7 @@ Your teacher will provide the database connection details:
 
 ## Column descriptions
 
-Descriptions of all BIS and OFELIA columns included in this database can be found here:
+Descriptions of all BIS and OFELIA columns, including data types and definitions used in this database can be found here:
 
 - [BIS and OFELIA column descriptions](tables-and-columns.md)
 
