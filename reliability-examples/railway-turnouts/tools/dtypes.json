@@ -1,0 +1,49 @@
+{
+    "bis": {
+        "Bdl": "str",
+        "Pl_Forb": "str",
+        "Växelnr": "str",
+        "Växeltyp": "str",
+        "tunglängd": "float64",
+        "LÖ-radie": "int64",
+        "V/H-växel": "str",
+        "Hsp": "str",
+        "Inläggningsår Växel": "int64",
+        "Tillverkare Växel": "str",
+        "Tillverkningsår Växel": "int64",
+        "Värmeeffekt(kW) totalt": "float64",
+        "Sliper typ": "str",
+        "Befästningstyp": "str",
+        "Ballast typ": "str",
+        "Besiktningsklass": "str",
+        "Utrustad med växelvärme": "str",
+        "Växeldriv modell": "str",
+        "Antal växel driv": "Int64",
+        "KorsningModell": "str"
+    },
+    "ofelia": {
+        "Felrapport": "str",
+        "Pl_Forb": "str",
+        "Bdl": "str",
+        "Tågstörande": "str",
+        "Orsakskod": "str",
+        "Anmält datum": "datetime64[us]",
+        "Vidareanmält": "datetime64[us]",
+        "Påbörjat": "datetime64[us]",
+        "Avhjälpt": "datetime64[us]",
+        "Anläggningsindivid": "str",
+        "Anläggningstyp (BVS)": "str",
+        "Växeltyp (ANL)": "str",
+        "Anläggningsdel (BVS)": "str"
+    },
+    "type_map": {
+        "str": "text",
+        "object": "text",
+        "category": "text",
+        "int64": "integer",
+        "Int64": "integer",
+        "float64": "numeric",
+        "datetime64[ns]": "timestamp",
+        "datetime64[us]": "timestamp"
+    }
+}
