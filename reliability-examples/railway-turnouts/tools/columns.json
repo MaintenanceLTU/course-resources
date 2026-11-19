@@ -1,0 +1,138 @@
+{
+    "bis": {
+        "Bdl": {
+            "sv": "Bandel",
+            "en": "Line section"
+        },
+        "Pl_Forb": {
+            "sv": "Driftplats",
+            "en": "Location reference"
+        },
+        "Växelnr": {
+            "sv": "Växelnummer",
+            "en": "Turnout identifier"
+        },
+        "Växeltyp": {
+            "sv": "Växeltyp",
+            "en": "Turnout type"
+        },
+        "tunglängd": {
+            "sv": "Tunglängd",
+            "en": "Switch blade length"
+        },
+        "LÖ-radie": {
+            "sv": "Lågrälsradie",
+            "en": "Diverging track radius"
+        },
+        "V/H-växel": {
+            "sv": "Vänster- eller högerväxel",
+            "en": "Left- or right-hand turnout"
+        },
+		"Hsp": {
+			"sv": "nhsp: normal huvudspår, ahsp: avvikande huvudspår, ssp: sidospår",
+			"en": "nhsp: main track, ahsp: alternative main track, ssp: side track"
+		},
+        "Inläggningsår Växel": {
+            "sv": "Installationsår för växel",
+            "en": "Turnout installation year"
+        },
+        "Tillverkare Växel": {
+            "sv": "Tillverkare av växel",
+            "en": "Turnout manufacturer"
+        },
+        "Tillverkningsår Växel": {
+            "sv": "Tillverkningsår för växel",
+            "en": "Turnout manufacturing year"
+        },
+        "Värmeeffekt(kW) totalt": {
+            "sv": "Total installerad växelvärmeeffekt",
+            "en": "Total switch heating power (kW)"
+        },
+        "Sliper typ": {
+            "sv": "Slipertyp",
+            "en": "Sleeper type"
+        },
+        "Befästningstyp": {
+            "sv": "Befästningstyp",
+            "en": "Fastening type"
+        },
+        "Ballast typ": {
+            "sv": "Ballasttyp",
+            "en": "Ballast type"
+        },
+        "Besiktningsklass": {
+            "sv": "Besiktningsklass",
+            "en": "Inspection class"
+        },
+        "Utrustad med växelvärme": {
+            "sv": "Utrustad med växelvärme",
+            "en": "Equipped with switch heating"
+        },
+        "Växeldriv modell": {
+            "sv": "Modell på växeldriv",
+            "en": "Point machine model"
+        },
+        "Antal växel driv": {
+            "sv": "Antal växeldriv",
+            "en": "Number of point machines"
+        },
+        "KorsningModell": {
+            "sv": "Korsningsmodell",
+            "en": "Crossing model"
+        }
+    },
+    "ofelia": {
+        "Felrapport": {
+            "sv": "Felrapportnummer",
+            "en": "Failure report ID"
+        },
+        "Pl_Forb": {
+            "sv": "Driftplats",
+            "en": "Location reference"
+        },
+        "Bdl": {
+            "sv": "Bandel",
+            "en": "Line section"
+        },
+        "Tågstörande": {
+            "sv": "Tågstörande fel",
+            "en": "Train-delaying failure"
+        },
+        "Orsakskod": {
+            "sv": "Orsakskod",
+            "en": "Cause code"
+        },
+        "Anmält datum": {
+            "sv": "Datum då felet anmäldes",
+            "en": "Failure report date"
+        },
+        "Vidareanmält": {
+            "sv": "Tidpunkt för vidareanmälan",
+            "en": "Forwarded time"
+        },
+        "Påbörjat": {
+            "sv": "Tidpunkt då arbetet påbörjades",
+            "en": "Work start time"
+        },
+        "Avhjälpt": {
+            "sv": "Tidpunkt då felet avhjälptes",
+            "en": "Fault restoration time"
+        },
+        "Anläggningsindivid": {
+            "sv": "Anläggningsindivid",
+            "en": "Asset identifier"
+        },
+        "Anläggningstyp (BVS)": {
+            "sv": "Anläggningstyp",
+            "en": "Asset type"
+        },
+        "Växeltyp (ANL)": {
+            "sv": "Växeltyp",
+            "en": "Turnout type"
+        },
+        "Anläggningsdel (BVS)": {
+            "sv": "Anläggningsdel",
+            "en": "Asset part"
+        }
+    }
+}
